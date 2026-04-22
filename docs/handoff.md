@@ -1,7 +1,7 @@
 # Handoff
 
-**Last updated**: 2026-04-21 (homepage + legal pages + Auth.js wiring)
-**Current focus**: legal surface for OAuth compliance landed — awaiting real auth UI work
+**Last updated**: 2026-04-22 (feature-folder refactor; products is the template slice)
+**Current focus**: moving remaining slices (categories, cart, search, auth) into `features/`
 
 ## Done
 
@@ -9,8 +9,8 @@
 - `docs/` scaffolding: overview, routing, styling, data-model, components, handoff.
 - `next.config.ts` — `cacheComponents: true`, `images.remotePatterns` for picsum/unsplash.
 - Installed shadcn primitives: input, sheet, dropdown-menu, navigation-menu, separator, skeleton (button preserved — not overwritten). `next-themes` added.
-- Types: `lib/types/category.ts`, `lib/types/product.ts`.
-- Mock data: `lib/mock/categories.ts` (8 root + 25 nested, 2-level deep), `lib/mock/products.ts` (12 products, mix of variation/no-variation).
+- Types: `lib/types/category.ts`, `lib/types/money.ts`, `features/products/types.ts`.
+- Mock data: `lib/mock/categories.ts` (8 root + 25 nested, 2-level deep). Products moved to `features/products/queries.ts` (cached via `'use cache'` + `cacheTag('products')` + `cacheLife('hours')`) with a `searchProducts` server action at `features/products/actions.ts`.
 - Helpers: `lib/format.ts` (money/count via `Intl.NumberFormat`), `lib/icons.ts` (hugeicons key-name map).
 - `app/layout.tsx` — metadata (title template, OG, Twitter, canonical, robots, favicon), viewport, Inter font, `ThemeProvider` wrapper.
 - Site chrome: `site-header`, `site-nav` (mega-menu), `site-nav-mobile` (sheet drawer), `site-footer`.
@@ -25,7 +25,8 @@
 
 ## Next (pick any)
 
-1. **Backend/DB schema** (user owns) — once the product model is confirmed, tighten `lib/types/product.ts` and start swapping `lib/mock/*` for real fetchers.
+1. **Backend/DB schema** (user owns) — once the product model is confirmed, tighten `features/products/types.ts` and swap `features/products/queries.ts` body for drizzle calls. Callers don't change.
+1a. **Finish the refactor** — move `categories`, `cart`, `wishlist`, `search`, `auth` into `features/` following the `products` template. See `docs/architecture.md`.
 2. **Real cart/wishlist count**: server-fetch cookie → Redis → count. Wrap `CartButton`/`WishlistButton` in `<Suspense>` and remove the `MOCK_*_COUNT` constants.
 3. **Search**: wire typeahead to a server action or API route backed by OpenSearch. Client side only keeps input + arrow-key handling.
 4. **Category listing page** `/c/[...slug]` — this is where the **sidebar** lives (filters, nested nav). JSON-LD `BreadcrumbList` + paginated `ItemList`.

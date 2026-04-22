@@ -14,7 +14,7 @@ Scalable ecommerce frontend, USA-only, Amazon/eBay-style IA. Deployed on Vercel.
 ## Architecture
 
 - **Rendering**: Cache Components (`cacheComponents: true`). Homepage sections are cached server components with `use cache` + `cacheTag("home:<section>")`; personal chips (cart/wishlist count) are dynamic, streamed under `<Suspense>`.
-- **Data**: `lib/mock/*` provides typed fixtures today; the same function signatures will be re-implemented against the DB later (drop-in swap, no component changes).
+- **Data**: each domain lives under `features/<domain>/` with server-only `queries.ts` (cached) + `mutations.ts` + `"use server"` `actions.ts`, backed by infra clients in `lib/<db|cache|search|storage>/`. Today `queries.ts` wraps mock fixtures; swap the function body to drizzle later — callers don't change. `lib/mock/categories.ts` is the last holdout. See `docs/architecture.md`.
 - **SEO**: per-route `generateMetadata`, semantic HTML, JSON-LD (`Organization`, `WebSite` + `SearchAction`, `ItemList` for rails, `Product` on PDP later), `robots.ts`, `sitemap.ts`.
 - **Theming**: theme tokens only — never hex/rgb/palette utilities like `bg-zinc-*`. Dark mode via `next-themes` + the `.dark` class already defined in globals.css.
 
@@ -44,25 +44,30 @@ components/
   site-nav.tsx                desktop mega-menu
   site-nav-mobile.tsx         mobile drawer (client)
   site-footer.tsx             footer
-  search-typeahead.tsx        client — input + suggestion dropdown
+  search-typeahead.tsx        client — input + suggestion dropdown (calls searchProducts action)
   cart-button.tsx             client — reads cart count (Redis later)
   wishlist-button.tsx         client — reads wishlist count (Redis later)
   theme-provider.tsx          next-themes wrapper
   theme-toggle.tsx            client — light/dark button
   hero.tsx                    homepage placeholder hero
   category-tiles.tsx          featured categories strip
-  product-card.tsx            single product card
-  product-rail.tsx            labeled rail of product cards (N Arrivals / Trending / Top Rated)
-  deal-of-the-day.tsx         single deal card with countdown
+  deal-of-the-day.tsx         single deal card with countdown (async; reads getDealOfTheDay)
   trust-bar.tsx               free ship / returns / support strip
   newsletter.tsx              email capture block
+features/
+  products/
+    types.ts                  Product, ProductOption, ProductVariant
+    queries.ts                server-only, `use cache`, drizzle-ready
+    actions.ts                "use server" — searchProducts (for client typeahead)
+    components/
+      product-card.tsx
+      product-rail.tsx
 lib/
   types/
     category.ts
-    product.ts
+    money.ts                  shared Money type
   mock/
-    categories.ts
-    products.ts
+    categories.ts             last holdout — move to features/categories/ next
   format.ts                   currency + compact number
   utils.ts                    cn()
 styles/globals.css

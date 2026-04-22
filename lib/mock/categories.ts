@@ -56,3 +56,24 @@ export function getChildren(parentId: string | null) {
 export function getRoots() {
   return categories.filter((c) => c.parentId === null);
 }
+
+export function getCategoryChain(id: string): Category[] {
+  const chain: Category[] = [];
+  let current = categories.find((c) => c.id === id);
+  while (current) {
+    chain.unshift(current);
+    current = current.parentId
+      ? categories.find((c) => c.id === current!.parentId)
+      : undefined;
+  }
+  return chain;
+}
+
+export function categoryHref(chain: Category[]): string {
+  return (
+    "/c/" +
+    chain
+      .map((c) => c.name.toLowerCase().replace(/[^\w]+/g, "-"))
+      .join("/")
+  );
+}

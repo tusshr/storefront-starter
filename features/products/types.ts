@@ -1,4 +1,4 @@
-export type Money = { amount: number; currency: "USD" };
+import type { Money } from "@/lib/types/money";
 
 export type ProductOption = {
   id: string;

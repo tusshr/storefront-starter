@@ -1,4 +1,4 @@
-import type { Money } from "@/lib/types/product";
+import type { Money } from "@/lib/types/money";
 
 const usd = new Intl.NumberFormat("en-US", {
   style: "currency",

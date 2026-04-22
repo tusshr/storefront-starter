@@ -2,16 +2,16 @@ import { CategoryTiles } from "@/components/category-tiles";
 import { DealOfTheDay } from "@/components/deal-of-the-day";
 import { Hero } from "@/components/hero";
 import { Newsletter } from "@/components/newsletter";
-import { ProductRail } from "@/components/product-rail";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteNav } from "@/components/site-nav";
 import { TrustBar } from "@/components/trust-bar";
+import { ProductRail } from "@/features/products/components/product-rail";
 import {
   getNewArrivals,
   getTopRated,
   getTrending,
-} from "@/lib/mock/products";
+} from "@/features/products/queries";
 
 const siteUrl = "https://bhalow.com";
 
@@ -49,10 +49,12 @@ function HomeJsonLd() {
   );
 }
 
-export default function HomePage() {
-  const newArrivals = getNewArrivals();
-  const trending = getTrending();
-  const topRated = getTopRated();
+export default async function HomePage() {
+  const [newArrivals, trending, topRated] = await Promise.all([
+    getNewArrivals(),
+    getTrending(),
+    getTopRated(),
+  ]);
 
   return (
     <>

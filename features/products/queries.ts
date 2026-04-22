@@ -1,10 +1,14 @@
-import type { Product } from "@/lib/types/product";
+import "server-only";
+
+import { cacheLife, cacheTag } from "next/cache";
+
+import type { Product } from "./types";
 
 function img(seed: string, w = 640, h = 640) {
   return `https://picsum.photos/seed/${seed}/${w}/${h}`;
 }
 
-export const products: Product[] = [
+const products: Product[] = [
   {
     id: "p-001",
     slug: "relaxed-short-sleeve-tee",
@@ -154,26 +158,38 @@ export const products: Product[] = [
   },
 ];
 
-export function getNewArrivals() {
+export async function getNewArrivals(): Promise<Product[]> {
+  "use cache";
+  cacheTag("products");
+  cacheLife("hours");
   return products.slice(0, 6);
 }
 
-export function getTrending() {
+export async function getTrending(): Promise<Product[]> {
+  "use cache";
+  cacheTag("products");
+  cacheLife("hours");
   return [products[4], products[9], products[7], products[1], products[5], products[2]];
 }
 
-export function getTopRated() {
+export async function getTopRated(): Promise<Product[]> {
+  "use cache";
+  cacheTag("products");
+  cacheLife("hours");
   return [...products]
     .filter((p) => p.rating)
     .sort((a, b) => (b.rating?.value ?? 0) - (a.rating?.value ?? 0))
     .slice(0, 6);
 }
 
-export function getDealOfTheDay() {
+export async function getDealOfTheDay(): Promise<Product> {
+  "use cache";
+  cacheTag("products", "products:deal");
+  cacheLife("hours");
   return products.find((p) => p.id === "p-009")!;
 }
 
-export function searchSuggestions(q: string) {
+export async function searchProducts(q: string): Promise<Product[]> {
   const query = q.trim().toLowerCase();
   if (!query) return [];
   return products

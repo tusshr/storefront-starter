@@ -6,11 +6,11 @@ import { HugeiconsIcon } from "@hugeicons/react";
 
 import { DealCountdown } from "@/components/deal-countdown";
 import { buttonVariants } from "@/components/ui/button";
-import { getDealOfTheDay } from "@/lib/mock/products";
+import { getDealOfTheDay } from "@/features/products/queries";
 import { formatCount, formatMoney } from "@/lib/format";
 
-export function DealOfTheDay() {
-  const product = getDealOfTheDay();
+export async function DealOfTheDay() {
+  const product = await getDealOfTheDay();
   const price = product.price ?? product.variants?.[0]?.price;
   const compare = product.compareAtPrice ?? product.variants?.[0]?.compareAtPrice;
 

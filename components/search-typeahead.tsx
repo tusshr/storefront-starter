@@ -7,7 +7,8 @@ import { Cancel01Icon, Search01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 import { Button } from "@/components/ui/button";
-import { searchSuggestions } from "@/lib/mock/products";
+import { searchProducts } from "@/features/products/actions";
+import type { Product } from "@/features/products/types";
 import { formatMoney } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -20,8 +21,8 @@ type Suggestion = {
   price: string;
 };
 
-function toSuggestions(query: string): Suggestion[] {
-  return searchSuggestions(query).map((p) => ({
+function toSuggestions(items: Product[]): Suggestion[] {
+  return items.map((p) => ({
     id: p.id,
     slug: p.slug,
     title: p.title,
@@ -52,10 +53,20 @@ export function SearchTypeahead({ className }: { className?: string }) {
   }, []);
 
   useEffect(() => {
-    const t = setTimeout(() => {
-      startTransition(() => setResults(toSuggestions(query)));
+    if (!query.trim()) {
+      setResults([]);
+      return;
+    }
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      const items = await searchProducts(query);
+      if (cancelled) return;
+      startTransition(() => setResults(toSuggestions(items)));
     }, 80);
-    return () => clearTimeout(t);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
   }, [query]);
 
   const submit = (q: string) => {

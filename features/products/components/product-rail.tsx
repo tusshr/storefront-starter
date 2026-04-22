@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { ProductCard } from "@/components/product-card";
-import type { Product } from "@/lib/types/product";
+import { ProductCard } from "@/features/products/components/product-card";
+import type { Product } from "@/features/products/types";
 
 type Props = {
   id: string;

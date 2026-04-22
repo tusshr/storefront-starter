@@ -4,8 +4,8 @@ import Link from "next/link";
 import { StarIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
+import type { Product } from "@/features/products/types";
 import { formatCount, formatMoney } from "@/lib/format";
-import type { Product } from "@/lib/types/product";
 
 type Props = {
   product: Product;

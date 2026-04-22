@@ -11,8 +11,8 @@ export default function LegalLayout({
     <>
       <SiteHeader />
       <SiteNav />
-      <main id="main" className="flex-1 bg-muted/20">
-        <article className="mx-auto w-full max-w-3xl px-4 py-12 text-sm leading-6 text-foreground lg:px-8 lg:py-16">
+      <main id="main" className="bg-muted/20 flex-1">
+        <article className="text-foreground mx-auto w-full max-w-3xl px-4 py-12 text-sm leading-6 lg:px-8 lg:py-16">
           {children}
         </article>
       </main>

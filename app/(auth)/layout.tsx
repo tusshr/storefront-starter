@@ -13,7 +13,7 @@ export default function AuthLayout({
       <Link
         href="/"
         aria-label="Bhalow — home"
-        className="mb-8 inline-block rounded-sm focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
+        className="focus-visible:ring-ring/30 mb-8 inline-block rounded-sm focus-visible:ring-2 focus-visible:outline-none"
       >
         <Image
           src={logo}

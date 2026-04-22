@@ -33,7 +33,7 @@ export function ProductCard({ product, priority }: Props) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:border-primary/40 hover:shadow-sm">
       <Link
-        href={`/p/${product.slug}`}
+        href={`/products/${product.slug}`}
         className="relative block aspect-[4/3] overflow-hidden bg-muted"
       >
         <Image
@@ -58,7 +58,7 @@ export function ProductCard({ product, priority }: Props) {
         )}
         <h3 className="line-clamp-2 text-sm leading-snug font-medium text-foreground">
           <Link
-            href={`/p/${product.slug}`}
+            href={`/products/${product.slug}`}
             className="focus-visible:outline-none"
           >
             {product.title}

@@ -88,7 +88,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
       e.preventDefault();
       const picked = results[active];
       setOpen(false);
-      router.push(`/p/${picked.slug}`);
+      router.push(`/products/${picked.slug}`);
     } else if (e.key === "Escape") {
       setOpen(false);
     }
@@ -167,7 +167,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
                 onMouseEnter={() => setActive(i)}
                 onClick={() => {
                   setOpen(false);
-                  router.push(`/p/${r.slug}`);
+                  router.push(`/products/${r.slug}`);
                 }}
                 className={cn(
                   "flex w-full items-center gap-3 rounded-md px-2 py-1.5 text-left text-sm transition-colors",

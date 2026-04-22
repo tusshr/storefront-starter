@@ -21,7 +21,7 @@ export async function DealOfTheDay() {
     >
       <div className="grid gap-0 overflow-hidden rounded-xl border border-border bg-card md:grid-cols-2">
         <Link
-          href={`/p/${product.slug}`}
+          href={`/products/${product.slug}`}
           className="relative block aspect-square bg-muted md:aspect-auto"
         >
           <Image
@@ -72,7 +72,7 @@ export async function DealOfTheDay() {
             )}
           </div>
           <Link
-            href={`/p/${product.slug}`}
+            href={`/products/${product.slug}`}
             className={`${buttonVariants({ size: "lg" })} w-fit`}
           >
             Shop the deal

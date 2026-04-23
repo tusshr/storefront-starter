@@ -11,6 +11,7 @@ export function ProductDescription({ html }: Props) {
       >
         About this product
       </h2>
+      {/* TODO: when MDX/blocknote is wired, replace the `html` prop + dangerouslySetInnerHTML with `children` (React nodes from the compiler). The prose container stays. */}
       <div
         className="prose prose-sm prose-neutral max-w-none dark:prose-invert prose-headings:mt-6 prose-headings:mb-2 prose-headings:text-sm prose-headings:font-semibold prose-headings:tracking-wide prose-headings:uppercase prose-headings:text-muted-foreground prose-p:leading-relaxed prose-li:marker:text-muted-foreground"
         dangerouslySetInnerHTML={{ __html: html }}

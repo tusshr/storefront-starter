@@ -30,13 +30,15 @@ export function SiteNav() {
   return (
     <nav
       aria-label="Primary"
-      className="hidden w-full border-b border-border bg-background md:block"
+      className="border-border bg-background hidden w-full border-b md:block"
     >
       <div className="mx-auto flex max-w-7xl items-center gap-1 px-4 lg:px-8">
         <NavigationMenu className="flex-1">
           <NavigationMenuList className="justify-start">
             <NavigationMenuItem>
-              <NavigationMenuLink render={<Link href="/" />}>Home</NavigationMenuLink>
+              <NavigationMenuLink render={<Link href="/" />}>
+                Home
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
             {roots.map((root) => {
@@ -57,7 +59,7 @@ export function SiteNav() {
                     <div className="grid w-lg gap-3 p-3 md:grid-cols-2">
                       <Link
                         href={slugFor(root)}
-                        className="col-span-full flex items-center justify-between rounded-md bg-muted/60 px-3 py-2 text-xs font-medium transition-colors hover:bg-muted"
+                        className="bg-muted/60 hover:bg-muted col-span-full flex items-center justify-between rounded-md px-3 py-2 text-xs font-medium transition-colors"
                       >
                         <span>Shop all {root.name}</span>
                         <span aria-hidden="true">→</span>
@@ -68,7 +70,7 @@ export function SiteNav() {
                           <div key={child.id} className="flex flex-col gap-1">
                             <Link
                               href={slugFor(child)}
-                              className="text-xs font-semibold text-foreground hover:text-primary"
+                              className="text-foreground hover:text-primary text-xs font-semibold"
                             >
                               {child.name}
                             </Link>
@@ -78,7 +80,7 @@ export function SiteNav() {
                                   <li key={g.id}>
                                     <Link
                                       href={slugFor(g)}
-                                      className="text-xs text-muted-foreground hover:text-foreground"
+                                      className="text-muted-foreground hover:text-foreground text-xs"
                                     >
                                       {g.name}
                                     </Link>
@@ -96,21 +98,23 @@ export function SiteNav() {
             })}
 
             <NavigationMenuItem>
-              <NavigationMenuLink render={<Link href="/blog" />}>Blog</NavigationMenuLink>
+              <NavigationMenuLink render={<Link href="/blog" />}>
+                Blog
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
         <Link
           href="/deals"
-          className="inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-destructive transition-colors hover:bg-destructive/10"
+          className="text-destructive hover:bg-destructive/10 inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium transition-colors"
         >
           <HugeiconsIcon icon={FireIcon} strokeWidth={2} className="size-4" />
           Hot Offers
         </Link>
         <Link
           href="/new"
-          className="inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium text-foreground transition-colors hover:bg-muted"
+          className="text-foreground hover:bg-muted inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium transition-colors"
         >
           <HugeiconsIcon icon={Tag02Icon} strokeWidth={2} className="size-4" />
           New Arrivals

@@ -12,14 +12,18 @@ const items: Item[] = [
   { icon: TruckIcon, title: "Free shipping", copy: "On US orders over $50" },
   { icon: ReturnRequestIcon, title: "Easy returns", copy: "30-day, no hassle" },
   { icon: Timer02Icon, title: "Fast delivery", copy: "2–5 business days" },
-  { icon: CustomerSupportIcon, title: "Real support", copy: "Chat, email, phone" },
+  {
+    icon: CustomerSupportIcon,
+    title: "Real support",
+    copy: "Chat, email, phone",
+  },
 ];
 
 export function TrustBar() {
   return (
     <section
       aria-label="Service highlights"
-      className="border-y border-border bg-muted/40"
+      className="border-border bg-muted/40 border-y"
     >
       <ul
         role="list"
@@ -29,15 +33,15 @@ export function TrustBar() {
           <li key={item.title} className="flex items-center gap-3">
             <span
               aria-hidden="true"
-              className="flex size-9 shrink-0 items-center justify-center rounded-md bg-background text-foreground ring-1 ring-border"
+              className="bg-background text-foreground ring-border flex size-9 shrink-0 items-center justify-center rounded-md ring-1"
             >
               <HugeiconsIcon icon={item.icon} strokeWidth={2} />
             </span>
             <span className="flex flex-col">
-              <span className="text-sm font-medium text-foreground">
+              <span className="text-foreground text-sm font-medium">
                 {item.title}
               </span>
-              <span className="text-xs text-muted-foreground">{item.copy}</span>
+              <span className="text-muted-foreground text-xs">{item.copy}</span>
             </span>
           </li>
         ))}

@@ -17,10 +17,10 @@ export function Newsletter() {
       aria-labelledby="newsletter-title"
       className="mx-auto w-full max-w-7xl px-4 py-10 lg:px-8"
     >
-      <div className="flex flex-col items-start gap-4 rounded-xl border border-border bg-secondary p-8 text-secondary-foreground md:flex-row md:items-center md:gap-8 md:p-12">
+      <div className="border-border bg-secondary text-secondary-foreground flex flex-col items-start gap-4 rounded-xl border p-8 md:flex-row md:items-center md:gap-8 md:p-12">
         <span
           aria-hidden="true"
-          className="flex size-12 items-center justify-center rounded-md bg-background text-foreground"
+          className="bg-background text-foreground flex size-12 items-center justify-center rounded-md"
         >
           <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} />
         </span>
@@ -31,9 +31,8 @@ export function Newsletter() {
           >
             New drops, first.
           </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Subscribe for launches, deals, and style picks. Unsubscribe
-            anytime.
+          <p className="text-muted-foreground mt-1 text-sm">
+            Subscribe for launches, deals, and style picks. Unsubscribe anytime.
           </p>
         </div>
         <form

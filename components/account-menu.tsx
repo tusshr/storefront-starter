@@ -22,7 +22,7 @@ export async function AccountMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger
         aria-label="Account"
-        className="inline-flex size-10 items-center justify-center overflow-hidden rounded-md text-foreground transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
+        className="text-foreground hover:bg-muted focus-visible:ring-ring/30 inline-flex size-10 items-center justify-center overflow-hidden rounded-md transition-colors focus-visible:ring-2 focus-visible:outline-none"
       >
         {user?.image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
@@ -40,11 +40,11 @@ export async function AccountMenu() {
         {user ? (
           <DropdownMenuGroup>
             <DropdownMenuLabel>
-              <span className="block truncate text-sm font-medium text-foreground">
+              <span className="text-foreground block truncate text-sm font-medium">
                 {user.name ?? "Signed in"}
               </span>
               {user.email && (
-                <span className="block truncate text-xs font-normal text-muted-foreground">
+                <span className="text-muted-foreground block truncate text-xs font-normal">
                   {user.email}
                 </span>
               )}

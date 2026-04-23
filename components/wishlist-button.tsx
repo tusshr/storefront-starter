@@ -14,13 +14,13 @@ export function WishlistButton() {
     <Link
       href="/wishlist"
       aria-label={`Wishlist, ${count} item${count === 1 ? "" : "s"}`}
-      className="relative inline-flex size-10 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
+      className="text-foreground hover:bg-muted focus-visible:ring-ring/30 relative inline-flex size-10 items-center justify-center rounded-md transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
       <HugeiconsIcon icon={FavouriteIcon} strokeWidth={2} />
       {count > 0 && (
         <span
           aria-hidden="true"
-          className="absolute -top-0.5 -right-0.5 inline-flex min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] leading-4 font-semibold text-primary-foreground"
+          className="bg-primary text-primary-foreground absolute -top-0.5 -right-0.5 inline-flex min-w-4 items-center justify-center rounded-full px-1 text-[10px] leading-4 font-semibold"
         >
           {formatCount(count)}
         </span>

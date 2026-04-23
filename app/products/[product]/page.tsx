@@ -121,7 +121,7 @@ function ProductPageSkeleton() {
     <div className="mx-auto w-full max-w-7xl px-4 pt-4 pb-12 lg:px-8">
       <div className="bg-muted h-3 w-48 animate-pulse rounded" />
       <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-12">
-        <div className="bg-muted aspect-[4/3] animate-pulse rounded-lg" />
+        <div className="bg-muted aspect-4/3 animate-pulse rounded-lg" />
         <div className="flex flex-col gap-4">
           <div className="bg-muted h-3 w-24 animate-pulse rounded" />
           <div className="bg-muted h-8 w-3/4 animate-pulse rounded" />

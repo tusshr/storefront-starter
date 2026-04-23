@@ -36,9 +36,29 @@ const products: Product[] = [
       { id: "color", name: "Color", values: ["Pink", "Cream"] },
     ],
     variants: [
-      { id: "v-p002-s-pink", sku: "H1-S-PNK", optionValues: { Size: "S", Color: "Pink" }, price: { amount: 61.0, currency: "USD" }, compareAtPrice: { amount: 79.0, currency: "USD" }, stock: 14 },
-      { id: "v-p002-m-pink", sku: "H1-M-PNK", optionValues: { Size: "M", Color: "Pink" }, price: { amount: 61.0, currency: "USD" }, compareAtPrice: { amount: 79.0, currency: "USD" }, stock: 9 },
-      { id: "v-p002-m-cream", sku: "H1-M-CRM", optionValues: { Size: "M", Color: "Cream" }, price: { amount: 64.0, currency: "USD" }, stock: 3 },
+      {
+        id: "v-p002-s-pink",
+        sku: "H1-S-PNK",
+        optionValues: { Size: "S", Color: "Pink" },
+        price: { amount: 61.0, currency: "USD" },
+        compareAtPrice: { amount: 79.0, currency: "USD" },
+        stock: 14,
+      },
+      {
+        id: "v-p002-m-pink",
+        sku: "H1-M-PNK",
+        optionValues: { Size: "M", Color: "Pink" },
+        price: { amount: 61.0, currency: "USD" },
+        compareAtPrice: { amount: 79.0, currency: "USD" },
+        stock: 9,
+      },
+      {
+        id: "v-p002-m-cream",
+        sku: "H1-M-CRM",
+        optionValues: { Size: "M", Color: "Cream" },
+        price: { amount: 64.0, currency: "USD" },
+        stock: 3,
+      },
     ],
     description:
       "<p>Heavyweight fleece with tonal chain-stitch embroidery across the chest. Designed for oversized wear — size down for a closer fit.</p><h3>Details</h3><ul><li>500gsm brushed-back cotton blend (80% cotton, 20% poly).</li><li>Double-lined hood with flat drawcords that won't fray.</li><li>Kangaroo pocket with a hidden phone slip inside.</li></ul><p>Wash cold, hang dry. Do not iron embroidery.</p>",
@@ -150,7 +170,7 @@ const products: Product[] = [
     compareAtPrice: { amount: 198.0, currency: "USD" },
     stock: 62,
     description:
-      "<p>The sensor stack of a premium wearable in a bezel that actually looks like a watch. Tracks heart rate, SpO₂, sleep stages, and 72 workout modes.</p><h3>Highlights</h3><ul><li>1.43\" AMOLED always-on display.</li><li>14-day battery life in typical use.</li><li>5 ATM water resistance — safe for pool swims.</li></ul><p>Syncs with iOS and Android via the Tempo app. Bands are 22mm quick-release.</p>",
+      '<p>The sensor stack of a premium wearable in a bezel that actually looks like a watch. Tracks heart rate, SpO₂, sleep stages, and 72 workout modes.</p><h3>Highlights</h3><ul><li>1.43" AMOLED always-on display.</li><li>14-day battery life in typical use.</li><li>5 ATM water resistance — safe for pool swims.</li></ul><p>Syncs with iOS and Android via the Tempo app. Bands are 22mm quick-release.</p>',
   },
   {
     id: "p-011",
@@ -193,7 +213,14 @@ export async function getTrending(): Promise<Product[]> {
   "use cache";
   cacheTag("products");
   cacheLife("hours");
-  return [products[4], products[9], products[7], products[1], products[5], products[2]];
+  return [
+    products[4],
+    products[9],
+    products[7],
+    products[1],
+    products[5],
+    products[2],
+  ];
 }
 
 export async function getTopRated(): Promise<Product[]> {

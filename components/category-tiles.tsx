@@ -16,13 +16,13 @@ export function CategoryTiles() {
       <div className="mb-4 flex items-end justify-between">
         <h2
           id="shop-by-category"
-          className="text-lg font-semibold text-foreground sm:text-xl"
+          className="text-foreground text-lg font-semibold sm:text-xl"
         >
           Shop by category
         </h2>
         <Link
           href="/c"
-          className="text-xs font-medium text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground text-xs font-medium"
         >
           View all →
         </Link>
@@ -37,17 +37,17 @@ export function CategoryTiles() {
             <li key={cat.id}>
               <Link
                 href={`/c/${cat.name.toLowerCase().replace(/[^\w]+/g, "-")}`}
-                className="group flex aspect-square flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-3 text-center transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm"
+                className="group border-border bg-card hover:border-primary/40 flex aspect-square flex-col items-center justify-center gap-2 rounded-lg border p-3 text-center transition-all hover:-translate-y-0.5 hover:shadow-sm"
               >
                 {icon && (
                   <span
                     aria-hidden="true"
-                    className="flex size-10 items-center justify-center rounded-md bg-muted text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary"
+                    className="bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary flex size-10 items-center justify-center rounded-md transition-colors"
                   >
                     <HugeiconsIcon icon={icon} strokeWidth={1.75} />
                   </span>
                 )}
-                <span className="text-xs font-medium text-foreground sm:text-sm">
+                <span className="text-foreground text-xs font-medium sm:text-sm">
                   {cat.name}
                 </span>
               </Link>

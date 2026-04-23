@@ -16,7 +16,7 @@ export function ProductGallery({ images, alt }: Props) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted">
+      <div className="border-border bg-muted relative aspect-[4/3] overflow-hidden rounded-lg border">
         <Image
           src={main}
           alt={alt}
@@ -36,9 +36,9 @@ export function ProductGallery({ images, alt }: Props) {
                 aria-pressed={i === active}
                 onClick={() => setActive(i)}
                 className={cn(
-                  "relative block size-16 overflow-hidden rounded-md border bg-muted transition-colors",
+                  "bg-muted relative block size-16 overflow-hidden rounded-md border transition-colors",
                   i === active
-                    ? "border-foreground ring-2 ring-ring/30"
+                    ? "border-foreground ring-ring/30 ring-2"
                     : "border-border hover:border-foreground/40"
                 )}
               >

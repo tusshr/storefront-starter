@@ -30,18 +30,24 @@ function slugFor(cat: Category): string {
   return `/c/${parts.join("/")}`;
 }
 
-function RootItem({ root, onNavigate }: { root: Category; onNavigate: () => void }) {
+function RootItem({
+  root,
+  onNavigate,
+}: {
+  root: Category;
+  onNavigate: () => void;
+}) {
   const children = getChildren(root.id!);
   const [open, setOpen] = useState(false);
   const hasChildren = children.length > 0;
 
   return (
-    <li className="border-b border-border/60 last:border-b-0">
+    <li className="border-border/60 border-b last:border-b-0">
       <div className="flex items-center">
         <Link
           href={slugFor(root)}
           onClick={onNavigate}
-          className="flex-1 py-3 text-sm font-medium text-foreground"
+          className="text-foreground flex-1 py-3 text-sm font-medium"
         >
           {root.name}
         </Link>
@@ -69,7 +75,7 @@ function RootItem({ root, onNavigate }: { root: Category; onNavigate: () => void
               <Link
                 href={slugFor(child)}
                 onClick={onNavigate}
-                className="block rounded-md py-1.5 text-xs text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground block rounded-md py-1.5 text-xs"
               >
                 {child.name}
               </Link>
@@ -112,7 +118,7 @@ export function SiteNavMobile() {
                   render={
                     <Link
                       href="/"
-                      className="flex py-3 text-sm font-medium text-foreground"
+                      className="text-foreground flex py-3 text-sm font-medium"
                     >
                       Home
                     </Link>
@@ -127,7 +133,7 @@ export function SiteNavMobile() {
                   render={
                     <Link
                       href="/deals"
-                      className="flex py-3 text-sm font-medium text-destructive"
+                      className="text-destructive flex py-3 text-sm font-medium"
                     >
                       Hot Offers
                     </Link>
@@ -139,7 +145,7 @@ export function SiteNavMobile() {
                   render={
                     <Link
                       href="/blog"
-                      className="flex py-3 text-sm font-medium text-foreground"
+                      className="text-foreground flex py-3 text-sm font-medium"
                     >
                       Blog
                     </Link>

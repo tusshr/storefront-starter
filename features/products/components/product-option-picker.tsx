@@ -29,10 +29,10 @@ export function ProductOptionPicker({
 }: Props) {
   return (
     <fieldset className="flex flex-col gap-2">
-      <legend className="flex items-baseline gap-2 text-sm font-medium text-foreground">
+      <legend className="text-foreground flex items-baseline gap-2 text-sm font-medium">
         <span>{option.name}</span>
         {selected && (
-          <span className="text-xs text-muted-foreground">{selected}</span>
+          <span className="text-muted-foreground text-xs">{selected}</span>
         )}
       </legend>
       <ul role="list" className="flex flex-wrap gap-2">

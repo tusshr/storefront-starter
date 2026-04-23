@@ -1,5 +1,6 @@
-import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+
+import type { Metadata, Viewport } from "next";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
@@ -56,7 +57,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn("h-full antialiased", inter.variable)}
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+      <body className="bg-background text-foreground flex min-h-full flex-col font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

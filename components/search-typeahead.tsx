@@ -53,10 +53,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
   }, []);
 
   useEffect(() => {
-    if (!query.trim()) {
-      setResults([]);
-      return;
-    }
+    if (!query.trim()) return;
     let cancelled = false;
     const t = setTimeout(async () => {
       const items = await searchProducts(query);
@@ -113,18 +110,21 @@ export function SearchTypeahead({ className }: { className?: string }) {
           icon={Search01Icon}
           strokeWidth={2}
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"
+          className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
         />
         <input
           id={listId}
           name="q"
           type="search"
+          role="combobox"
           autoComplete="off"
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
+            const v = e.target.value;
+            setQuery(v);
             setOpen(true);
             setActive(-1);
+            if (!v.trim()) setResults([]);
           }}
           onFocus={() => query && setOpen(true)}
           onKeyDown={onKey}
@@ -132,7 +132,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
           aria-autocomplete="list"
           aria-controls={open ? `${listId}-list` : undefined}
           aria-expanded={open}
-          className="h-10 w-full rounded-md border border-input bg-input/20 px-10 text-sm outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 dark:bg-input/30"
+          className="border-input bg-input/20 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/30 dark:bg-input/30 h-10 w-full rounded-md border px-10 text-sm transition-colors outline-none focus-visible:ring-2"
         />
         {query && (
           <Button
@@ -156,7 +156,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
         <ul
           id={`${listId}-list`}
           role="listbox"
-          className="absolute top-full right-0 left-0 z-50 mt-1 max-h-96 overflow-auto rounded-lg border border-border bg-popover p-1 shadow-lg"
+          className="border-border bg-popover absolute top-full right-0 left-0 z-50 mt-1 max-h-96 overflow-auto rounded-lg border p-1 shadow-lg"
         >
           {results.map((r, i) => (
             <li key={r.id}>
@@ -187,13 +187,13 @@ export function SearchTypeahead({ className }: { className?: string }) {
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="truncate">{r.title}</span>
                   {r.brand && (
-                    <span className="truncate text-xs text-muted-foreground">
+                    <span className="text-muted-foreground truncate text-xs">
                       {r.brand}
                     </span>
                   )}
                 </span>
                 {r.price && (
-                  <span className="shrink-0 text-xs font-medium text-foreground">
+                  <span className="text-foreground shrink-0 text-xs font-medium">
                     {r.price}
                   </span>
                 )}

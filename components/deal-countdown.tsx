@@ -21,13 +21,18 @@ function computeParts(targetMs: number): Parts {
  * keeps the server component deterministic (required under Cache Components).
  * When deals come from the DB, switch to an `endsAt` ISO string prop.
  */
-export function DealCountdown({ durationHours = 24 }: { durationHours?: number }) {
+export function DealCountdown({
+  durationHours = 24,
+}: {
+  durationHours?: number;
+}) {
   const [parts, setParts] = useState<Parts | null>(null);
 
   useEffect(() => {
     const target = Date.now() + durationHours * 3_600_000;
-    setParts(computeParts(target));
-    const id = setInterval(() => setParts(computeParts(target)), 1000);
+    const tick = () => setParts(computeParts(target));
+    queueMicrotask(tick);
+    const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, [durationHours]);
 
@@ -48,7 +53,7 @@ export function DealCountdown({ durationHours = 24 }: { durationHours?: number }
 
 function Cell({ label, value }: { label: string; value: string }) {
   return (
-    <span className="flex min-w-9 items-center justify-center rounded-md bg-foreground px-1.5 py-1 font-semibold text-background tabular-nums">
+    <span className="bg-foreground text-background flex min-w-9 items-center justify-center rounded-md px-1.5 py-1 font-semibold tabular-nums">
       <span className="sr-only">{label}: </span>
       {value}
     </span>

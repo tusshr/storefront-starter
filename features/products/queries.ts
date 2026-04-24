@@ -170,7 +170,7 @@ const products: Product[] = [
     compareAtPrice: { amount: 198.0, currency: "USD" },
     stock: 62,
     description:
-      '<p>The sensor stack of a premium wearable in a bezel that actually looks like a watch. Tracks heart rate, SpO₂, sleep stages, and 72 workout modes.</p><h3>Highlights</h3><ul><li>1.43" AMOLED always-on display.</li><li>14-day battery life in typical use.</li><li>5 ATM water resistance — safe for pool swims.</li></ul><p>Syncs with iOS and Android via the Tempo app. Bands are 22mm quick-release.</p>',
+      "<p>The sensor stack of a premium wearable in a bezel that actually looks like a watch. Tracks heart rate, SpO₂, sleep stages, and 72 workout modes.</p><h3>Highlights</h3><ul><li>1.43\" AMOLED always-on display.</li><li>14-day battery life in typical use.</li><li>5 ATM water resistance — safe for pool swims.</li></ul><p>Syncs with iOS and Android via the Tempo app. Bands are 22mm quick-release.</p>",
   },
   {
     id: "p-011",

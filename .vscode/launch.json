@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "storefront-starter: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "bun dev -- --inspect",
+    },
+    {
+      "name": "storefront-starter: debug client-side (Google Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "runtimeExecutable": "/usr/bin/google-chrome-stable",
+    },
+    {
+      "name": "storefront-starter: debug full stack",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "runtimeArgs": ["--inspect"],
+      "skipFiles": ["<node_internals>/**"],
+      "serverReadyAction": {
+        "action": "debugWithEdge",
+        "killOnServerStop": true,
+        "pattern": "- Local:.+(https?://.+)",
+        "uriFormat": "%s",
+        "webRoot": "${workspaceFolder}",
+      },
+    },
+  ],
+}

@@ -26,7 +26,7 @@
 ## Next (pick any)
 
 1. **Backend/DB schema** (user owns) — once the product model is confirmed, tighten `features/products/types.ts` and swap `features/products/queries.ts` body for drizzle calls. Callers don't change.
-1a. **Finish the refactor** — move `categories`, `cart`, `wishlist`, `search`, `auth` into `features/` following the `products` template. See `docs/architecture.md`.
+   1a. **Finish the refactor** — move `categories`, `cart`, `wishlist`, `search`, `auth` into `features/` following the `products` template. See `docs/architecture.md`.
 2. **Real cart/wishlist count**: server-fetch cookie → Redis → count. Wrap `CartButton`/`WishlistButton` in `<Suspense>` and remove the `MOCK_*_COUNT` constants.
 3. **Search**: wire typeahead to a server action or API route backed by OpenSearch. Client side only keeps input + arrow-key handling.
 4. **Category listing page** `/c/[...slug]` — this is where the **sidebar** lives (filters, nested nav). JSON-LD `BreadcrumbList` + paginated `ItemList`.

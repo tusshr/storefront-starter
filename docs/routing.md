@@ -2,23 +2,23 @@
 
 ## Route map (planned)
 
-| Path                       | Status        | Notes                                                                 |
-|----------------------------|---------------|-----------------------------------------------------------------------|
-| `/`                        | building      | Homepage — hero, categories, rails, deal, newsletter                  |
-| `/search`                  | future        | Search results (OpenSearch later). Header form submits here: `?q=...` |
-| `/c/[...slug]`             | future        | Category pages — nested slugs walk the category tree                  |
-| `/p/[slug]`                | future        | Product detail page (PDP). JSON-LD `Product`                          |
-| `/cart`                    | future        | Cart page (Redis-backed)                                              |
-| `/wishlist`                | future        | Wishlist (Redis-backed)                                               |
-| `/(auth)/login`            | built         | `/login` — Facebook OAuth sign-in via server action                   |
-| `/(auth)/register`         | built         | `/register` — Facebook OAuth sign-up via server action                |
-| `/(protected)/account/*`   | future        | Account, orders, addresses (guarded layout)                           |
-| `/api/auth/[...nextauth]`  | built         | Auth.js v5 handlers (GET/POST) — exports from `auth.ts`               |
-| `/(legal)/privacy`         | built         | `/privacy` — Privacy Policy                                           |
-| `/(legal)/terms`           | built         | `/terms` — Terms of Service                                           |
-| `/(legal)/data-deletion`   | built         | `/data-deletion` — OAuth data-deletion instructions                   |
-| `/robots.txt`              | built         | `app/robots.ts` — disallows cart/wishlist/orders/account/api          |
-| `/sitemap.xml`             | built         | `app/sitemap.ts` — static for now, dynamic later                      |
+| Path                      | Status   | Notes                                                                 |
+| ------------------------- | -------- | --------------------------------------------------------------------- |
+| `/`                       | building | Homepage — hero, categories, rails, deal, newsletter                  |
+| `/search`                 | future   | Search results (OpenSearch later). Header form submits here: `?q=...` |
+| `/c/[...slug]`            | future   | Category pages — nested slugs walk the category tree                  |
+| `/p/[slug]`               | future   | Product detail page (PDP). JSON-LD `Product`                          |
+| `/cart`                   | future   | Cart page (Redis-backed)                                              |
+| `/wishlist`               | future   | Wishlist (Redis-backed)                                               |
+| `/(auth)/login`           | built    | `/login` — Facebook OAuth sign-in via server action                   |
+| `/(auth)/register`        | built    | `/register` — Facebook OAuth sign-up via server action                |
+| `/(protected)/account/*`  | future   | Account, orders, addresses (guarded layout)                           |
+| `/api/auth/[...nextauth]` | built    | Auth.js v5 handlers (GET/POST) — exports from `auth.ts`               |
+| `/(legal)/privacy`        | built    | `/privacy` — Privacy Policy                                           |
+| `/(legal)/terms`          | built    | `/terms` — Terms of Service                                           |
+| `/(legal)/data-deletion`  | built    | `/data-deletion` — OAuth data-deletion instructions                   |
+| `/robots.txt`             | built    | `app/robots.ts` — disallows cart/wishlist/orders/account/api          |
+| `/sitemap.xml`            | built    | `app/sitemap.ts` — static for now, dynamic later                      |
 
 ## Route groups
 

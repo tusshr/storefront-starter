@@ -95,4 +95,4 @@ docs/                         this directory
 - **2026-04-21** — `(auth)` group for login/register; `(protected)` group exists with unknown purpose, leave alone.
 - **2026-04-21** — Auth.js v5 (`next-auth@5.0.0-beta.31`) added by user with Facebook provider only. Added `app/api/auth/[...nextauth]/route.ts` so the handlers actually resolve. Requires env vars: `AUTH_SECRET`, `AUTH_FACEBOOK_ID`, `AUTH_FACEBOOK_SECRET`. For production, also `AUTH_URL` (or `AUTH_TRUST_HOST=true` on Vercel).
 - **2026-04-21** — Tightened `--radius` from `0.625rem` to `0.25rem` and removed large per-component rounded overrides. `rounded-full` now reserved for actual circles only.
-- **2026-04-21** — Legal pages live at `/privacy`, `/terms`, `/data-deletion` (canonical URLs for Facebook/Meta OAuth console), grouped under `app/(legal)/`. Content faithful to existing bhalow.com/* pages, cleaned up.
+- **2026-04-21** — Legal pages live at `/privacy`, `/terms`, `/data-deletion` (canonical URLs for Facebook/Meta OAuth console), grouped under `app/(legal)/`. Content faithful to existing bhalow.com/\* pages, cleaned up.

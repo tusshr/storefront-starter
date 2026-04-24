@@ -17,7 +17,7 @@ Installed via `bunx shadcn add <name>`. Do not hand-edit unless you know what yo
 ## App routes with inlined layout/content
 
 | Path                                  | Kind   | Purpose                                                     |
-|---------------------------------------|--------|-------------------------------------------------------------|
+| ------------------------------------- | ------ | ----------------------------------------------------------- |
 | `app/(legal)/layout.tsx`              | server | Site chrome + `max-w-3xl` article container for legal pages |
 | `app/(legal)/privacy/page.tsx`        | server | Privacy Policy                                              |
 | `app/(legal)/terms/page.tsx`          | server | Terms of Service                                            |
@@ -29,27 +29,27 @@ Installed via `bunx shadcn add <name>`. Do not hand-edit unless you know what yo
 
 ## Custom components (`components/`)
 
-| File                        | Kind         | Purpose                                                      |
-|-----------------------------|--------------|--------------------------------------------------------------|
-| `site-header.tsx`           | server       | Top header: logo, search slot, actions slot, theme toggle    |
-| `site-nav.tsx`              | server       | Desktop mega-menu                                            |
-| `site-nav-mobile.tsx`       | client       | Mobile drawer using `sheet`                                  |
-| `site-footer.tsx`           | server       | Footer link columns, legal, socials                          |
-| `search-typeahead.tsx`      | client       | Input + suggestions dropdown. Submits to `/search?q=...`     |
-| `cart-button.tsx`           | client       | Cart icon with live count (mocked → Redis later)             |
-| `wishlist-button.tsx`       | client       | Wishlist icon with live count (mocked → Redis later)         |
-| `theme-provider.tsx`        | client       | `next-themes` wrapper                                        |
-| `theme-toggle.tsx`          | client       | Light/dark icon button                                       |
-| `hero.tsx`                  | server       | Homepage placeholder hero                                    |
-| `category-tiles.tsx`        | server       | Homepage-visible category shortcuts                          |
-| `product-card.tsx`          | server       | Single product card (image/title/price/rating)               |
-| `product-rail.tsx`          | server       | Titled horizontal rail of product cards                      |
-| `deal-of-the-day.tsx`       | server       | Single featured deal — composes DealCountdown                |
-| `deal-countdown.tsx`        | client       | Ticking HH:MM:SS countdown; takes `durationHours`            |
-| `account-menu.tsx`          | server       | Account dropdown with sign-in/register/wishlist/orders       |
-| `trust-bar.tsx`             | server       | Free ship / returns / support strip                          |
-| `newsletter.tsx`            | server       | Email capture (server action placeholder)                    |
-| `facebook-sign-in.tsx`      | server       | Wraps `signIn("facebook")` from Auth.js in a server-action form |
+| File                   | Kind   | Purpose                                                         |
+| ---------------------- | ------ | --------------------------------------------------------------- |
+| `site-header.tsx`      | server | Top header: logo, search slot, actions slot, theme toggle       |
+| `site-nav.tsx`         | server | Desktop mega-menu                                               |
+| `site-nav-mobile.tsx`  | client | Mobile drawer using `sheet`                                     |
+| `site-footer.tsx`      | server | Footer link columns, legal, socials                             |
+| `search-typeahead.tsx` | client | Input + suggestions dropdown. Submits to `/search?q=...`        |
+| `cart-button.tsx`      | client | Cart icon with live count (mocked → Redis later)                |
+| `wishlist-button.tsx`  | client | Wishlist icon with live count (mocked → Redis later)            |
+| `theme-provider.tsx`   | client | `next-themes` wrapper                                           |
+| `theme-toggle.tsx`     | client | Light/dark icon button                                          |
+| `hero.tsx`             | server | Homepage placeholder hero                                       |
+| `category-tiles.tsx`   | server | Homepage-visible category shortcuts                             |
+| `product-card.tsx`     | server | Single product card (image/title/price/rating)                  |
+| `product-rail.tsx`     | server | Titled horizontal rail of product cards                         |
+| `deal-of-the-day.tsx`  | server | Single featured deal — composes DealCountdown                   |
+| `deal-countdown.tsx`   | client | Ticking HH:MM:SS countdown; takes `durationHours`               |
+| `account-menu.tsx`     | server | Account dropdown with sign-in/register/wishlist/orders          |
+| `trust-bar.tsx`        | server | Free ship / returns / support strip                             |
+| `newsletter.tsx`       | server | Email capture (server action placeholder)                       |
+| `facebook-sign-in.tsx` | server | Wraps `signIn("facebook")` from Auth.js in a server-action form |
 
 ## Rules
 

@@ -10,10 +10,10 @@ export type Category = {
   id?: string;
   name: string;
   parentId: string | null;
-  icon: string | null;          // hugeicons key name, resolved via icon map at render
+  icon: string | null; // hugeicons key name, resolved via icon map at render
   homepageVisible: boolean;
   createdBy?: string | null;
-  createdDate?: string;         // ISO 8601
+  createdDate?: string; // ISO 8601
 };
 ```
 
@@ -30,8 +30,8 @@ export type Money = { amount: number; currency: "USD" };
 
 export type ProductOption = {
   id: string;
-  name: string;           // "Color", "Size"
-  values: string[];       // ["Red", "Blue"] or ["S", "M", "L"]
+  name: string; // "Color", "Size"
+  values: string[]; // ["Red", "Blue"] or ["S", "M", "L"]
 };
 
 export type ProductVariant = {
@@ -51,7 +51,7 @@ export type Product = {
   description?: string;
   brand?: string;
   categoryId: string;
-  images: string[];       // first is primary
+  images: string[]; // first is primary
   rating?: { value: number; count: number };
   // Products without variations carry these at the base:
   price?: Money;

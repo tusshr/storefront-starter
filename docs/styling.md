@@ -8,24 +8,24 @@
 
 ## Only use these color utilities
 
-| Purpose              | Utility                                               |
-|----------------------|-------------------------------------------------------|
-| Page bg/fg           | `bg-background` / `text-foreground`                   |
-| Card surface         | `bg-card text-card-foreground`                        |
-| Popover/dropdown     | `bg-popover text-popover-foreground`                  |
-| Primary action       | `bg-primary text-primary-foreground`                  |
-| Secondary surface    | `bg-secondary text-secondary-foreground`              |
-| Muted surface/text   | `bg-muted` / `text-muted-foreground`                  |
-| Accent highlight     | `bg-accent text-accent-foreground`                    |
-| Border               | `border-border`                                       |
-| Ring/focus           | `ring-ring`                                           |
-| Destructive/urgency  | `bg-destructive/10 text-destructive` etc.             |
-| Sidebar              | `bg-sidebar`, `text-sidebar-foreground`, etc.         |
-| Charts               | `fill-chart-1` … `fill-chart-5`                       |
+| Purpose             | Utility                                       |
+| ------------------- | --------------------------------------------- |
+| Page bg/fg          | `bg-background` / `text-foreground`           |
+| Card surface        | `bg-card text-card-foreground`                |
+| Popover/dropdown    | `bg-popover text-popover-foreground`          |
+| Primary action      | `bg-primary text-primary-foreground`          |
+| Secondary surface   | `bg-secondary text-secondary-foreground`      |
+| Muted surface/text  | `bg-muted` / `text-muted-foreground`          |
+| Accent highlight    | `bg-accent text-accent-foreground`            |
+| Border              | `border-border`                               |
+| Ring/focus          | `ring-ring`                                   |
+| Destructive/urgency | `bg-destructive/10 text-destructive` etc.     |
+| Sidebar             | `bg-sidebar`, `text-sidebar-foreground`, etc. |
+| Charts              | `fill-chart-1` … `fill-chart-5`               |
 
 Radius: `rounded-sm|md|lg|xl|2xl|3xl|4xl` (scaled off `--radius`, currently `0.25rem` — a deliberately tight/serious look chosen on 2026-04-21). If a section feels too soft, tighten the token, not one-off overrides.
 
-`rounded-full` is reserved for things that are *actually* circles: tiny notification/count badges on the header icons, decorative blur blobs in the hero. Icon chips, inputs, and buttons use `rounded-md`.
+`rounded-full` is reserved for things that are _actually_ circles: tiny notification/count badges on the header icons, decorative blur blobs in the hero. Icon chips, inputs, and buttons use `rounded-md`.
 
 ## Forbidden
 
@@ -39,8 +39,8 @@ Radius: `rounded-sm|md|lg|xl|2xl|3xl|4xl` (scaled off `--radius`, currently `0.2
 `@hugeicons/react` with `@hugeicons/core-free-icons`. Size via wrapping utility or the icon's `size` prop. Example:
 
 ```tsx
-import { HugeiconsIcon } from "@hugeicons/react";
 import { ShoppingBag03Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 <HugeiconsIcon icon={ShoppingBag03Icon} className="size-5" />;
 ```

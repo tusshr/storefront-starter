@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { ShoppingBag03Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { ShoppingBagIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { formatCount } from "@/lib/format";
 
@@ -16,7 +15,7 @@ export function CartButton() {
       aria-label={`Cart, ${count} item${count === 1 ? "" : "s"}`}
       className="text-foreground hover:bg-muted focus-visible:ring-ring/30 relative inline-flex size-10 items-center justify-center rounded-md transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
-      <HugeiconsIcon icon={ShoppingBag03Icon} strokeWidth={2} />
+      <ShoppingBagIcon className="size-6" />
       {count > 0 && (
         <span
           aria-hidden="true"

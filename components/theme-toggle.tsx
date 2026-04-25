@@ -2,8 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
-import { Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react/dist/ssr";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,7 @@ export function ThemeToggle() {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
-      <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} strokeWidth={2} />
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
 }

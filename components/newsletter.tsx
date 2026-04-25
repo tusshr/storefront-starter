@@ -1,5 +1,4 @@
-import { Mail01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +21,7 @@ export function Newsletter() {
           aria-hidden="true"
           className="bg-background text-foreground flex size-12 items-center justify-center rounded-md"
         >
-          <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} />
+          <EnvelopeSimpleIcon className="size-6" />
         </span>
         <div className="flex-1">
           <h2

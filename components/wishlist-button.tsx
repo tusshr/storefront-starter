@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { FavouriteIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { HeartIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { formatCount } from "@/lib/format";
 
@@ -16,7 +15,7 @@ export function WishlistButton() {
       aria-label={`Wishlist, ${count} item${count === 1 ? "" : "s"}`}
       className="text-foreground hover:bg-muted focus-visible:ring-ring/30 relative inline-flex size-10 items-center justify-center rounded-md transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
-      <HugeiconsIcon icon={FavouriteIcon} strokeWidth={2} />
+      <HeartIcon className="size-6" />
       {count > 0 && (
         <span
           aria-hidden="true"

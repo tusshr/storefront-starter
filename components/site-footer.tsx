@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  Facebook01Icon,
-  InstagramIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
+  FacebookLogoIcon,
+  InstagramLogoIcon,
+  XLogoIcon,
+  YoutubeLogoIcon,
+} from "@phosphor-icons/react/dist/ssr";
+
+import type { Icon } from "@phosphor-icons/react";
 
 import logo from "@/assets/logo/site-logo.png";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -55,19 +56,23 @@ const columns: Column[] = [
   },
 ];
 
-const socials: { href: string; label: string; icon: IconSvgElement }[] = [
+const socials: { href: string; label: string; icon: Icon }[] = [
   {
     href: "https://instagram.com/bhalow",
     label: "Instagram",
-    icon: InstagramIcon,
+    icon: InstagramLogoIcon,
   },
   {
     href: "https://facebook.com/bhalow",
     label: "Facebook",
-    icon: Facebook01Icon,
+    icon: FacebookLogoIcon,
   },
-  { href: "https://twitter.com/bhalow", label: "Twitter", icon: TwitterIcon },
-  { href: "https://youtube.com/@bhalow", label: "YouTube", icon: YoutubeIcon },
+  { href: "https://twitter.com/bhalow", label: "Twitter", icon: XLogoIcon },
+  {
+    href: "https://youtube.com/@bhalow",
+    label: "YouTube",
+    icon: YoutubeLogoIcon,
+  },
 ];
 
 export async function SiteFooter() {
@@ -85,19 +90,22 @@ export async function SiteFooter() {
             shipped across the United States.
           </p>
           <ul role="list" className="mt-4 flex items-center gap-2">
-            {socials.map((s) => (
-              <li key={s.href}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={s.label}
-                  className="border-border bg-background text-muted-foreground hover:text-foreground inline-flex size-9 items-center justify-center rounded-md border transition-colors"
-                >
-                  <HugeiconsIcon icon={s.icon} strokeWidth={2} />
-                </a>
-              </li>
-            ))}
+            {socials.map((s) => {
+              const SocialIcon = s.icon;
+              return (
+                <li key={s.href}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={s.label}
+                    className="border-border bg-background text-muted-foreground hover:text-foreground inline-flex size-9 items-center justify-center rounded-md border transition-colors"
+                  >
+                    <SocialIcon className="size-5" />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
         {columns.map((col) => (

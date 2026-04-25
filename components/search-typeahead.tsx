@@ -3,8 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState, useTransition } from "react";
 
-import { Cancel01Icon, Search01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  MagnifyingGlassIcon,
+  XIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
 import { searchProducts } from "@/features/products/actions";
@@ -106,9 +108,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
         <label htmlFor={listId} className="sr-only">
           Search products
         </label>
-        <HugeiconsIcon
-          icon={Search01Icon}
-          strokeWidth={2}
+        <MagnifyingGlassIcon
           aria-hidden="true"
           className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
         />
@@ -147,7 +147,7 @@ export function SearchTypeahead({ className }: { className?: string }) {
               setOpen(false);
             }}
           >
-            <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
+            <XIcon />
           </Button>
         )}
       </form>

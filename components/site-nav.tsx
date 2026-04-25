@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { FireIcon, Tag02Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { FireIcon, TagIcon } from "@phosphor-icons/react/dist/ssr";
 
 import {
   NavigationMenu,
@@ -109,14 +108,14 @@ export function SiteNav() {
           href="/deals"
           className="text-destructive hover:bg-destructive/10 inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium transition-colors"
         >
-          <HugeiconsIcon icon={FireIcon} strokeWidth={2} className="size-4" />
+          <FireIcon className="size-4" />
           Hot Offers
         </Link>
         <Link
           href="/new"
           className="text-foreground hover:bg-muted inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-xs font-medium transition-colors"
         >
-          <HugeiconsIcon icon={Tag02Icon} strokeWidth={2} className="size-4" />
+          <TagIcon className="size-4" />
           New Arrivals
         </Link>
       </div>

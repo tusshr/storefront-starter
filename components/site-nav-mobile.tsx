@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { ArrowDown01Icon, Menu01Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { CaretDownIcon, ListIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -60,9 +59,7 @@ function RootItem({
             aria-label={open ? `Collapse ${root.name}` : `Expand ${root.name}`}
             onClick={() => setOpen((v) => !v)}
           >
-            <HugeiconsIcon
-              icon={ArrowDown01Icon}
-              strokeWidth={2}
+            <CaretDownIcon
               className={cn("transition-transform", open && "rotate-180")}
             />
           </Button>
@@ -103,7 +100,7 @@ export function SiteNavMobile() {
           />
         }
       >
-        <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} />
+        <ListIcon />
       </SheetTrigger>
       <SheetContent side="left" className="w-80 p-0">
         <SheetHeader>

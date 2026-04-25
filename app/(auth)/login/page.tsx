@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import type { Metadata } from "next";
 
-import { FacebookSignIn } from "@/components/facebook-sign-in";
-
 export const metadata: Metadata = {
   title: "Sign in",
   description: "Sign in to your Bhalow account.",
@@ -29,7 +27,9 @@ export default function LoginPage() {
         </p>
       </header>
 
-      <FacebookSignIn label="Continue with Facebook" redirectTo="/" />
+      <div className="border-border bg-muted/30 text-muted-foreground rounded-md border border-dashed px-4 py-8 text-center text-xs">
+        Sign-in is being rebuilt. Check back soon.
+      </div>
 
       <p className="text-muted-foreground mt-6 text-center text-xs">
         New to Bhalow?{" "}

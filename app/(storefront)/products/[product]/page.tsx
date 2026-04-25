@@ -2,11 +2,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import {
-  HeartAddIcon,
-  ShoppingCart01Icon,
+  HeartIcon,
+  ShoppingCartIcon,
   StarIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -247,9 +246,7 @@ async function ProductPageContent({
               </h1>
               {product.rating && (
                 <p className="text-muted-foreground flex items-center gap-1.5 text-sm">
-                  <HugeiconsIcon
-                    icon={StarIcon}
-                    strokeWidth={2}
+                  <StarIcon
                     className="text-foreground size-4"
                     aria-hidden="true"
                   />
@@ -322,7 +319,7 @@ async function ProductPageContent({
                   canBuy ? "Add to cart" : "Unavailable — add to cart disabled"
                 }
               >
-                <HugeiconsIcon icon={ShoppingCart01Icon} strokeWidth={2} />
+                <ShoppingCartIcon />
                 {canBuy ? "Add to cart" : "Unavailable"}
               </Button>
               <Button
@@ -332,7 +329,7 @@ async function ProductPageContent({
                 className="size-11"
                 aria-label="Add to wishlist"
               >
-                <HugeiconsIcon icon={HeartAddIcon} strokeWidth={2} />
+                <HeartIcon />
               </Button>
             </div>
 

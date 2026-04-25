@@ -1,27 +1,27 @@
+import type { Icon } from "@phosphor-icons/react";
 import {
-  Clock01Icon,
   DiamondIcon,
+  DressIcon,
   FlowerIcon,
-  ManIcon,
-  PaintBrush02Icon,
-  RunningShoesIcon,
-  ShoppingBag03Icon,
-  WomanIcon,
-} from "@hugeicons/core-free-icons";
-import type { IconSvgElement } from "@hugeicons/react";
+  PaintBrushIcon,
+  ShoppingBagIcon,
+  SneakerIcon,
+  TShirtIcon,
+  WatchIcon,
+} from "@phosphor-icons/react/dist/ssr";
 
-const map: Record<string, IconSvgElement> = {
-  ManIcon,
-  WomanIcon,
+const map: Record<string, Icon> = {
+  TShirtIcon,
+  DressIcon,
   DiamondIcon,
   FlowerIcon,
-  Clock01Icon,
-  ShoppingBag03Icon,
-  RunningShoesIcon,
-  PaintBrush02Icon,
+  WatchIcon,
+  ShoppingBagIcon,
+  SneakerIcon,
+  PaintBrushIcon,
 };
 
-export function resolveIcon(key: string | null): IconSvgElement | null {
+export function resolveIcon(key: string | null): Icon | null {
   if (!key) return null;
   return map[key] ?? null;
 }

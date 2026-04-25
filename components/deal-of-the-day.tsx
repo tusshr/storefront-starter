@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { StarIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { StarIcon } from "@phosphor-icons/react/dist/ssr";
 
 import { DealCountdown } from "@/components/deal-countdown";
 import { buttonVariants } from "@/components/ui/button";
@@ -45,11 +44,7 @@ export async function DealOfTheDay() {
           </div>
           {product.rating && (
             <p className="text-muted-foreground flex items-center gap-1 text-xs">
-              <HugeiconsIcon
-                icon={StarIcon}
-                strokeWidth={2}
-                className="text-foreground size-3.5"
-              />
+              <StarIcon className="text-foreground size-3.5" />
               <span className="text-foreground font-medium">
                 {product.rating.value.toFixed(1)}
               </span>

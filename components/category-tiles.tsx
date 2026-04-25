@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import { HugeiconsIcon } from "@hugeicons/react";
-
 import { resolveIcon } from "@/lib/icons";
 import { getHomepageCategories } from "@/lib/mock/categories";
 
@@ -32,19 +30,19 @@ export function CategoryTiles() {
         className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-8"
       >
         {cats.map((cat) => {
-          const icon = resolveIcon(cat.icon);
+          const Icon = resolveIcon(cat.icon);
           return (
             <li key={cat.id}>
               <Link
                 href={`/c/${cat.name.toLowerCase().replace(/[^\w]+/g, "-")}`}
                 className="group border-border bg-card hover:border-primary/40 flex aspect-square flex-col items-center justify-center gap-2 rounded-lg border p-3 text-center transition-all hover:-translate-y-0.5 hover:shadow-sm"
               >
-                {icon && (
+                {Icon && (
                   <span
                     aria-hidden="true"
-                    className="bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary flex size-10 items-center justify-center rounded-md transition-colors"
+                    className="text-muted-foreground group-hover:text-primary flex size-10 items-center justify-center rounded-md transition-colors"
                   >
-                    <HugeiconsIcon icon={icon} strokeWidth={1.75} />
+                    <Icon className="size-10" />
                   </span>
                 )}
                 <span className="text-foreground text-xs font-medium sm:text-sm">

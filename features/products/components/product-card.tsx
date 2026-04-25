@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { StarIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { StarIcon } from "@phosphor-icons/react/dist/ssr";
 
 import type { Product } from "@/features/products/types";
 import { formatCount, formatMoney } from "@/lib/format";
@@ -66,9 +65,7 @@ export function ProductCard({ product, priority }: Props) {
         </h3>
         {product.rating && (
           <p className="text-muted-foreground flex items-center gap-1 text-xs">
-            <HugeiconsIcon
-              icon={StarIcon}
-              strokeWidth={2}
+            <StarIcon
               className="text-foreground size-3.5"
               aria-hidden="true"
             />

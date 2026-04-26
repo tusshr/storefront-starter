@@ -255,7 +255,6 @@ export default function PrivacyPage() {
           </h2>
           <address className="text-muted-foreground space-y-1 not-italic">
             <p>Bhalow Inc.</p>
-            <p>17519 90th Ave, Jamaica, NY 11432</p>
             <p>
               <a
                 href="mailto:info@bhalow.com"

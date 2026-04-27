@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 export default nextConfig;

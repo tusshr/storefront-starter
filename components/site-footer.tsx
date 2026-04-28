@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import type { Icon } from "@phosphor-icons/react";
 import {
   FacebookLogoIcon,
   InstagramLogoIcon,
   XLogoIcon,
   YoutubeLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
-
-import type { Icon } from "@phosphor-icons/react";
 
 import logo from "@/assets/logo/site-logo.png";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -83,7 +82,13 @@ export async function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-6 lg:px-8">
         <div className="md:col-span-2 md:pr-4">
           <Link href="/" aria-label="Bhalow — home" className="inline-block">
-            <Image src={logo} alt="Bhalow" height={32} className="h-8 w-auto" />
+            <Image
+              src={logo}
+              alt="Bhalow"
+              height={32}
+              placeholder="blur"
+              className="h-8 w-auto"
+            />
           </Link>
           <p className="text-muted-foreground mt-3 max-w-xs text-xs">
             Bhalow is your online store for fashion, jewelry, beauty, and more —

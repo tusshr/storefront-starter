@@ -8,9 +8,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { SiteNav } from "@/components/site-nav";
 import { Button } from "@/components/ui/button";
 import { ProductBreadcrumbs } from "@/features/products/components/product-breadcrumbs";
 import { ProductDescription } from "@/features/products/components/product-description";
@@ -102,16 +99,9 @@ export default function ProductPage({
   searchParams: Search;
 }) {
   return (
-    <>
-      <SiteHeader />
-      <SiteNav />
-      <main id="main" className="flex-1">
-        <Suspense fallback={<ProductPageSkeleton />}>
-          <ProductPageContent params={params} searchParams={searchParams} />
-        </Suspense>
-      </main>
-      <SiteFooter />
-    </>
+    <Suspense fallback={<ProductPageSkeleton />}>
+      <ProductPageContent params={params} searchParams={searchParams} />
+    </Suspense>
   );
 }
 

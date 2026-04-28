@@ -58,6 +58,12 @@ export default function RootLayout({
       className={cn("h-full antialiased", inter.variable)}
     >
       <body className="bg-background text-foreground flex min-h-full flex-col font-sans">
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "addEventListener('error',e=>{if(e?.message?.includes('Skipped ViewTransition due to document being hidden'))e.preventDefault()})",
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

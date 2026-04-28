@@ -132,3 +132,40 @@
     @apply font-sans;
   }
 }
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+::view-transition-old(.cart-exit) {
+  animation: 140ms ease-out both vt-fade-out;
+}
+::view-transition-new(.cart-enter) {
+  animation: 220ms ease-in 140ms both vt-fade-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

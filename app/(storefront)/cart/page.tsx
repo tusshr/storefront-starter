@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, ViewTransition } from "react";
 
 import {
   CheckCircleIcon,
@@ -47,13 +47,21 @@ export const metadata: Metadata = {
 export default function CartPage() {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-8 lg:px-8 lg:py-12">
-      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+      <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
         Shopping Cart
       </h1>
       <Separator className="mt-6 mb-8" />
 
-      <Suspense fallback={<CartSkeleton />}>
-        <CartContents />
+      <Suspense
+        fallback={
+          <ViewTransition exit="cart-exit" default="none">
+            <CartSkeleton />
+          </ViewTransition>
+        }
+      >
+        <ViewTransition enter="cart-enter" default="none">
+          <CartContents />
+        </ViewTransition>
       </Suspense>
     </div>
   );
@@ -81,120 +89,124 @@ async function CartContents() {
         </h2>
         <ul role="list" className="flex flex-col gap-3">
           {lines.map((line) => (
-            <li key={line.id}>
-              <Item
-                variant="muted"
-                className={cn(
-                  "flex-wrap items-start gap-4 p-4 sm:flex-nowrap sm:items-center sm:p-5",
-                  !line.inStock && "opacity-75"
-                )}
-              >
-                <ItemMedia className="bg-muted relative size-20 shrink-0 self-start overflow-hidden rounded-md sm:size-24 sm:self-center">
-                  <Link
-                    href={`/products/${line.slug}`}
-                    aria-hidden="true"
-                    tabIndex={-1}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={line.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 640px) 96px, 80px"
-                      className="object-cover"
-                    />
-                  </Link>
-                </ItemMedia>
-
-                <ItemContent className="min-w-0 gap-1.5">
-                  <ItemTitle className="line-clamp-2 text-sm font-semibold whitespace-normal sm:text-base">
+            <ViewTransition key={line.id} name={`cart-line-${line.id}`}>
+              <li>
+                <Item
+                  variant="muted"
+                  className={cn(
+                    "flex-wrap items-start gap-4 p-4 sm:flex-nowrap sm:items-center sm:p-5",
+                    !line.inStock && "opacity-75"
+                  )}
+                >
+                  <ItemMedia className="bg-muted relative size-20 shrink-0 self-start overflow-hidden rounded-md sm:size-24 sm:self-center">
                     <Link
                       href={`/products/${line.slug}`}
-                      className="hover:text-primary focus-visible:outline-none"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      className="absolute inset-0"
                     >
-                      {line.title}
-                    </Link>
-                  </ItemTitle>
-
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-                    {line.options.length > 0 && (
-                      <span className="text-muted-foreground text-xs sm:text-sm">
-                        {line.options.join(" | ")}
-                      </span>
-                    )}
-                    {line.inStock ? (
-                      <Badge variant="secondary" className="text-success gap-1">
-                        <CheckCircleIcon weight="fill" />
-                        In stock
-                      </Badge>
-                    ) : (
-                      <Badge variant="secondary" className="gap-1">
-                        <ProhibitIcon />
-                        Sold out
-                      </Badge>
-                    )}
-                  </div>
-
-                  <p className="text-sm font-semibold tabular-nums sm:text-base">
-                    {formatMoney(line.price)}
-                  </p>
-                </ItemContent>
-
-                <ItemActions className="ml-auto basis-full justify-end sm:basis-auto">
-                  <form action={updateLine} className="contents">
-                    <input type="hidden" name="lineId" value={line.id} />
-                    <ButtonGroup>
-                      <Input
-                        key={line.quantity}
-                        name="quantity"
-                        type="number"
-                        min={1}
-                        inputMode="numeric"
-                        defaultValue={line.quantity}
-                        aria-label={`Quantity of ${line.title}`}
-                        className="h-8 w-12 [appearance:textfield] text-center [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                      <Image
+                        src={line.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 96px, 80px"
+                        className="object-cover"
                       />
+                    </Link>
+                  </ItemMedia>
+
+                  <ItemContent className="min-w-0 gap-1.5">
+                    <ItemTitle className="line-clamp-2 text-sm font-semibold whitespace-normal sm:text-base">
+                      <Link
+                        href={`/products/${line.slug}`}
+                        className="hover:text-primary focus-visible:outline-none"
+                      >
+                        {line.title}
+                      </Link>
+                    </ItemTitle>
+
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                      {line.options.length > 0 && (
+                        <span className="text-muted-foreground text-xs sm:text-sm">
+                          {line.options.join(" | ")}
+                        </span>
+                      )}
+                      {line.inStock ? (
+                        <Badge
+                          variant="secondary"
+                          className="text-success gap-1"
+                        >
+                          <CheckCircleIcon weight="fill" />
+                          In stock
+                        </Badge>
+                      ) : (
+                        <Badge variant="secondary" className="gap-1">
+                          <ProhibitIcon />
+                          Sold out
+                        </Badge>
+                      )}
+                    </div>
+
+                    <p className="text-sm font-semibold tabular-nums sm:text-base">
+                      {formatMoney(line.price)}
+                    </p>
+                  </ItemContent>
+
+                  <ItemActions className="ml-auto basis-full justify-end sm:basis-auto">
+                    <form action={updateLine} className="contents">
+                      <input type="hidden" name="lineId" value={line.id} />
+                      <ButtonGroup>
+                        <Input
+                          key={line.quantity}
+                          name="quantity"
+                          type="number"
+                          min={1}
+                          inputMode="numeric"
+                          defaultValue={line.quantity}
+                          aria-label={`Quantity of ${line.title}`}
+                          className="h-8 w-12 [appearance:textfield] text-center [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                        />
+                        <Button
+                          type="submit"
+                          name="op"
+                          value="inc"
+                          variant="outline"
+                          size="icon-lg"
+                          aria-label={`Increase quantity of ${line.title}`}
+                        >
+                          <PlusIcon />
+                        </Button>
+                        <Button
+                          type="submit"
+                          name="op"
+                          value="dec"
+                          variant="outline"
+                          size="icon-lg"
+                          aria-label={
+                            line.quantity <= 1
+                              ? `Remove ${line.title} from cart`
+                              : `Decrease quantity of ${line.title}`
+                          }
+                        >
+                          <MinusIcon />
+                        </Button>
+                      </ButtonGroup>
+                    </form>
+                    <form action={removeLine}>
+                      <input type="hidden" name="lineId" value={line.id} />
                       <Button
                         type="submit"
-                        name="op"
-                        value="inc"
-                        variant="outline"
+                        variant="destructive"
                         size="icon-lg"
-                        aria-label={`Increase quantity of ${line.title}`}
+                        aria-label={`Remove ${line.title} from cart`}
                       >
-                        <PlusIcon />
+                        <TrashIcon weight="bold" />
                       </Button>
-                      <Button
-                        type="submit"
-                        name="op"
-                        value="dec"
-                        variant="outline"
-                        size="icon-lg"
-                        aria-label={
-                          line.quantity <= 1
-                            ? `Remove ${line.title} from cart`
-                            : `Decrease quantity of ${line.title}`
-                        }
-                      >
-                        <MinusIcon />
-                      </Button>
-                    </ButtonGroup>
-                  </form>
-                  <form action={removeLine}>
-                    <input type="hidden" name="lineId" value={line.id} />
-                    <Button
-                      type="submit"
-                      variant="ghost"
-                      size="icon-lg"
-                      aria-label={`Remove ${line.title} from cart`}
-                      className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                    >
-                      <TrashIcon weight="bold" />
-                    </Button>
-                  </form>
-                </ItemActions>
-              </Item>
-            </li>
+                    </form>
+                  </ItemActions>
+                </Item>
+              </li>
+            </ViewTransition>
           ))}
         </ul>
       </section>
@@ -238,7 +250,7 @@ async function CartContents() {
           <CardFooter>
             <Button
               type="button"
-              className="h-11 w-full"
+              className="h-9 w-full"
               disabled={lines.length === 0}
             >
               Checkout

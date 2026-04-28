@@ -12,9 +12,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { SiteNav } from "@/components/site-nav";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -49,23 +46,16 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <>
-      <SiteHeader />
-      <SiteNav />
-      <main id="main" className="flex-1">
-        <div className="mx-auto w-full max-w-7xl px-4 py-8 lg:px-8 lg:py-12">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Shopping Cart
-          </h1>
-          <Separator className="mt-6 mb-8" />
+    <div className="mx-auto w-full max-w-7xl px-4 py-8 lg:px-8 lg:py-12">
+      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        Shopping Cart
+      </h1>
+      <Separator className="mt-6 mb-8" />
 
-          <Suspense fallback={<CartSkeleton />}>
-            <CartContents />
-          </Suspense>
-        </div>
-      </main>
-      <SiteFooter />
-    </>
+      <Suspense fallback={<CartSkeleton />}>
+        <CartContents />
+      </Suspense>
+    </div>
   );
 }
 

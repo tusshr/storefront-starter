@@ -2,9 +2,6 @@ import { CategoryTiles } from "@/components/category-tiles";
 import { DealOfTheDay } from "@/components/deal-of-the-day";
 import { Hero } from "@/components/hero";
 import { Newsletter } from "@/components/newsletter";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { SiteNav } from "@/components/site-nav";
 import { TrustBar } from "@/components/trust-bar";
 import { ProductRail } from "@/features/products/components/product-rail";
 import {
@@ -58,35 +55,30 @@ export default async function HomePage() {
 
   return (
     <>
-      <SiteHeader />
-      <SiteNav />
-      <main id="main" className="flex-1">
-        <Hero />
-        <CategoryTiles />
-        <ProductRail
-          id="new-arrivals"
-          title="New arrivals"
-          viewAllHref="/new"
-          products={newArrivals}
-          prioritizeFirst
-        />
-        <ProductRail
-          id="trending"
-          title="Trending now"
-          viewAllHref="/trending"
-          products={trending}
-        />
-        <DealOfTheDay />
-        <ProductRail
-          id="top-rated"
-          title="Top rated"
-          viewAllHref="/top-rated"
-          products={topRated}
-        />
-        <TrustBar />
-        <Newsletter />
-      </main>
-      <SiteFooter />
+      <Hero />
+      <CategoryTiles />
+      <ProductRail
+        id="new-arrivals"
+        title="New arrivals"
+        viewAllHref="/new"
+        products={newArrivals}
+        prioritizeFirst
+      />
+      <ProductRail
+        id="trending"
+        title="Trending now"
+        viewAllHref="/trending"
+        products={trending}
+      />
+      <DealOfTheDay />
+      <ProductRail
+        id="top-rated"
+        title="Top rated"
+        viewAllHref="/top-rated"
+        products={topRated}
+      />
+      <TrustBar />
+      <Newsletter />
       <HomeJsonLd />
     </>
   );

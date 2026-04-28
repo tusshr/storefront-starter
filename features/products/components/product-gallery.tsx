@@ -15,19 +15,12 @@ export function ProductGallery({ images, alt }: Props) {
   const main = images[active] ?? images[0];
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="border-border bg-muted relative aspect-[4/3] overflow-hidden rounded-lg border">
-        <Image
-          src={main}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          priority
-          className="object-cover"
-        />
-      </div>
+    <div className="flex flex-col gap-3 lg:flex-row lg:items-start">
       {images.length > 1 && (
-        <ul role="list" className="flex gap-2 overflow-x-auto">
+        <ul
+          role="list"
+          className="order-2 flex gap-2 overflow-x-auto lg:order-1 lg:w-20 lg:flex-col lg:overflow-y-auto"
+        >
           {images.map((src, i) => (
             <li key={src} className="shrink-0">
               <button
@@ -36,7 +29,7 @@ export function ProductGallery({ images, alt }: Props) {
                 aria-pressed={i === active}
                 onClick={() => setActive(i)}
                 className={cn(
-                  "bg-muted relative block size-16 overflow-hidden rounded-md border transition-colors",
+                  "bg-card relative block size-16 overflow-hidden rounded-lg border transition-all sm:size-18 lg:size-20",
                   i === active
                     ? "border-foreground ring-ring/30 ring-2"
                     : "border-border hover:border-foreground/40"
@@ -46,7 +39,7 @@ export function ProductGallery({ images, alt }: Props) {
                   src={src}
                   alt=""
                   fill
-                  sizes="64px"
+                  sizes="80px"
                   className="object-cover"
                 />
               </button>
@@ -54,6 +47,17 @@ export function ProductGallery({ images, alt }: Props) {
           ))}
         </ul>
       )}
+
+      <div className="border-border bg-card relative order-1 aspect-square w-full min-w-0 overflow-hidden rounded-xl border lg:order-2 lg:max-w-136">
+        <Image
+          src={main}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 34rem, (min-width: 1024px) 42vw, 100vw"
+          priority
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }

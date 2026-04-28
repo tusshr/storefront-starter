@@ -28,7 +28,7 @@ export function ProductOptionPicker({
   currentParams,
 }: Props) {
   return (
-    <fieldset className="flex flex-col gap-2">
+    <fieldset className="flex flex-col gap-3">
       <legend className="text-foreground flex items-baseline gap-2 text-sm font-medium">
         <span>{option.name}</span>
         {selected && (
@@ -46,12 +46,12 @@ export function ProductOptionPicker({
                 href={href}
                 scroll={false}
                 replace
-                aria-pressed={isSelected}
+                aria-current={isSelected ? "true" : undefined}
                 className={cn(
-                  "inline-flex h-9 min-w-11 items-center justify-center rounded-md border px-3 text-xs font-medium transition-colors",
+                  "inline-flex h-10 min-w-12 items-center justify-center rounded-md border px-3 text-xs font-medium transition-all",
                   isSelected
-                    ? "border-foreground bg-foreground text-background"
-                    : "border-border bg-card text-foreground hover:border-foreground/40"
+                    ? "border-foreground bg-accent text-foreground ring-ring/20 ring-2"
+                    : "border-border bg-card text-foreground hover:border-foreground/40 hover:bg-muted/40"
                 )}
               >
                 {value}
